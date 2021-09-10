@@ -48,5 +48,5 @@ jobs:
       - run: cat setting.gradle
       - run: chmod +x ./gradlew
       - run: ./gradlew build
-      - run: ./gradlew :httprookie:uploadArchives
+      - run: ./gradlew :httprookie:uploadArchives --stacktrace
 
