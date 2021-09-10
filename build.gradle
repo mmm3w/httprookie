@@ -4,7 +4,6 @@ plugins {
     id 'maven'
 }
 
-
 android {
     compileSdkVersion build_versions.compile_sdk
     buildToolsVersion build_versions.build_tools
@@ -12,8 +11,8 @@ android {
     defaultConfig {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
-        versionCode module_version.code
-        versionName module_version.name
+        versionCode 1
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -51,7 +50,7 @@ uploadArchives{
         mavenDeployer {
             pom.groupId = 'com.mitsuki.armory'
             pom.artifactId = 'httprookie'
-            pom.version = module_version.name
+            pom.version = "1.0.0"
             pom.packaging = 'aar'
             repository(url: uri("${rootProject.projectDir}/repo"))
         }
