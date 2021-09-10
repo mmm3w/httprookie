@@ -49,6 +49,10 @@ jobs:
 
       - name: Run build
         working-directory: ./armory
+        run: chmod +x ./gradlew
+
+      - name: Run build
+        working-directory: ./armory
         run: ./gradlew build
 
       - name: Package module
