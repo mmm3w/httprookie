@@ -23,7 +23,7 @@ jobs:
       - name: Setup Java JDK
         uses: actions/setup-java@v2.3.0
         with:
-          java-version: '1.8'
+          java-version: '8'
           distribution: 'adopt'
       - run: java -version
 #       - name: Gradle Build Action
