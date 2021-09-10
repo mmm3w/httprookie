@@ -29,13 +29,16 @@ jobs:
       - name: Setup Android SDK Tools
         uses: android-actions/setup-android@v2.0.2
       - run: ls
-#      - name: Check armory for compile
-#        uses: actions/checkout@v2
-#        with:
-#          repository: mmm3w/armory
-#      - run:cd armory
-#      - name: Checks-out self
-#          uses: actions/checkout@v2
+      - name: Check armory for compile
+        uses: actions/checkout@v2
+        with:
+          repository: mmm3w/armory
+      - run:cd armory
+      - name: Checks-out self
+          uses: actions/checkout@v2
+      - run: echo "sdk.dir=" > local.properties
+      - run: echo $ANDROID_HOME >> local.properties
+      - run: car local.properties
 #      - run:./gradlew build
 #      - run:./gradlew
 #       - name: Gradle Build Action
