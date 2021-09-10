@@ -25,22 +25,33 @@ jobs:
         with:
           java-version: '8'
           distribution: 'adopt'
-      - run: java -version
+
       - name: Setup Android SDK Tools
         uses: android-actions/setup-android@v2.0.2
+
       - name: Check armory for compile
         uses: actions/checkout@v2
         with:
           repository: mmm3w/armory
-      - run: pwd
-      - run: cd armory
-      - run: pwd
+
+      - name: Config SDK
+        working-directory: ./armory
+        run: echo "sdk.dir=$ANDROID_HOME" > local.properties
+
       - name: Checks-out self
         uses: actions/checkout@v2
-      - run: echo "sdk.dir=$ANDROID_HOME" > local.properties
-      - run: cat local.properties
-      - run: echo "include ':httprookie'" > setting.gradle
-      - run: pwd
-      - run: gradlew build
-      - run: gradlew :httprookie:uploadArchives
+        with:
+          path: httprookie
+
+      - name: Config module
+        working-directory: ./armory
+        run: echo "include ':httprookie'" > setting.gradle
+
+      - name: Run build
+        working-directory: ./armory
+        run: gradlew build
+
+      - name: Package module
+        working-directory: ./armory
+        run: gradlew :httprookie:uploadArchives
 
