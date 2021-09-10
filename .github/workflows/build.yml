@@ -38,7 +38,7 @@ jobs:
         uses: actions/checkout@v2
       - run: echo "sdk.dir=" > local.properties
       - run: echo $ANDROID_HOME >> local.properties
-      - run: car local.properties
+      - run: cat local.properties
 #      - run:./gradlew build
 #      - run:./gradlew
 #       - name: Gradle Build Action
