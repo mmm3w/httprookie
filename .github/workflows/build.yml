@@ -43,10 +43,7 @@ jobs:
 
       - run: cat ./httprookie/README.md
 
-      - run: echo "rootProject.name = \"ArmoryDemo\"" > setting.gradle
-      - run: echo "include ':httprookie'" >> setting.gradle
-      - run: cat setting.gradle
+      - run: echo "include ':httprookie'" > setting.gradle
       - run: chmod +x ./gradlew
-      - run: ./gradlew build
       - run: ./gradlew :httprookie:uploadArchives --stacktrace
 
