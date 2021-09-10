@@ -33,7 +33,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: mmm3w/armory
-      - run:cd armory
+      - run: cd armory
       - name: Checks-out self
         uses: actions/checkout@v2
       - run: echo "sdk.dir=" > local.properties
