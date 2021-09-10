@@ -49,9 +49,9 @@ jobs:
 
       - name: Run build
         working-directory: ./armory
-        run: gradlew build
+        run: ./gradlew build
 
       - name: Package module
         working-directory: ./armory
-        run: gradlew :httprookie:uploadArchives
+        run: ./gradlew :httprookie:uploadArchives
 
