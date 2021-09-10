@@ -32,7 +32,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: mmm3w/armory
+      - run: pwd
       - run: cd armory
+      - run: pwd
       - name: Checks-out self
         uses: actions/checkout@v2
       - run: echo "sdk.dir=$ANDROID_HOME" > local.properties
