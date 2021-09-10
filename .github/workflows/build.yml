@@ -37,47 +37,7 @@ jobs:
         uses: actions/checkout@v2
       - run: echo "sdk.dir=$ANDROID_HOME" > local.properties
       - run: cat local.properties
-#      - run:./gradlew build
-#      - run:./gradlew
-#       - name: Gradle Build Action
-#         uses: gradle/gradle-build-action@v1.5.1
-#         with:
-#           arguments: build
-# #           arguments: httprookie:uploadArchives
-          
-#           # Path to the Gradle Wrapper directory
-#           wrapper-directory: # optional
-#           # Path to the Gradle executable
-#           gradle-executable: # optional
-#           # Gradle version to use
-#           gradle-version: # optional
-#           # Path to the root directory of the build
-#           build-root-directory: # optional
-#           # Gradle command line arguments, see gradle --help
-          
-#           # Whether caching downloaded Gradle distributions is enabled or not, default to 'true'
-#           distributions-cache-enabled: # optional, default is true
-#           # Whether caching wrapper installation is enabled or not, default to 'true'
-#           wrapper-cache-enabled: # optional, default is true
-#           # Whether caching dependencies is enabled or not, default to 'false'
-#           dependencies-cache-enabled: # optional
-#           # Globs of files to hash in the build root directory, separated by new lines, use best-effort if unset
-#           dependencies-cache-key: # optional
-#           # Whether to restore only if exact match, default to 'false'
-#           dependencies-cache-exact: # optional
-#           # Whether caching build configuration is enabled or not, default to 'false'
-#           configuration-cache-enabled: # optional
-#           # Globs of files to hash in the build root directory, separated by new lines, use best-effort if unset
-#           configuration-cache-key: # optional
-#           # Whether to restore only if exact match, default to 'false'
-#           configuration-cache-exact: # optional
-#           # When 'true', existing entries will be read from the cache but no entries will be written
-#           cache-read-only: # optional
-    
-#       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-#       - uses: actions/checkout@v2
-
-#       # Runs a single command using the runners shell
-#       - name: Run a one-line script
-#         run: echo Hello, world!
+      - run: echo "include ':httprookie'" > setting.gradle
+      - run: ./gradlew build
+      - run: ./gradlew :httprookie:uploadArchives
 
