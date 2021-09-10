@@ -47,6 +47,6 @@ jobs:
       - run: echo "include ':httprookie'" >> setting.gradle
       - run: cat setting.gradle
       - run: chmod +x ./gradlew
-#      - run: ./gradlew build
-#      - run: ./gradlew :httprookie:uploadArchives
+      - run: ./gradlew build
+      - run: ./gradlew :httprookie:uploadArchives
 
