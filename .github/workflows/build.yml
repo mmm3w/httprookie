@@ -41,6 +41,7 @@ jobs:
 #        with:
 #          path: httprookie
 
+      - run: echo "rootProject.name = \"ArmoryDemo\"" > setting.gradle
       - run: echo "include ':httprookie'" > setting.gradle
       - run: cat setting.gradle
       - run: chmod +x ./gradlew
