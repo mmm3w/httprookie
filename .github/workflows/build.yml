@@ -38,6 +38,7 @@ jobs:
       - run: echo "sdk.dir=$ANDROID_HOME" > local.properties
       - run: cat local.properties
       - run: echo "include ':httprookie'" > setting.gradle
-      - run: ./gradlew build
-      - run: ./gradlew :httprookie:uploadArchives
+      - run: pwd
+      - run: gradlew build
+      - run: gradlew :httprookie:uploadArchives
 
