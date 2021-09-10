@@ -47,13 +47,12 @@ jobs:
         working-directory: ./armory
         run: echo "include ':httprookie'" > setting.gradle
 
-      - name: Run build
-        working-directory: ./armory
-        run: chmod +x ./gradlew
+#      - name: Run build
+#        working-directory: ./armory
+#        run: chmod +x ./gradlew
 
       - name: Run build
-        working-directory: ./armory
-        run: ./gradlew build
+        run: ./armory/gradlew build
 
       - name: Package module
         working-directory: ./armory
