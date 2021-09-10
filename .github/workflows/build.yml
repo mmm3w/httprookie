@@ -36,10 +36,12 @@ jobs:
 
       - run: echo "sdk.dir=$ANDROID_HOME" > local.properties
 
-#      - name: Checks-out self
-#        uses: actions/checkout@v2
-#        with:
-#          path: httprookie
+      - name: Checks-out self
+        uses: actions/checkout@v2
+        with:
+          path: httprookie
+
+      - run: cat ./httprookie/README.md
 
       - run: echo "rootProject.name = \"ArmoryDemo\"" > setting.gradle
       - run: echo "include ':httprookie'" >> setting.gradle
