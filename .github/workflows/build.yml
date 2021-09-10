@@ -36,13 +36,14 @@ jobs:
 
       - run: echo "sdk.dir=$ANDROID_HOME" > local.properties
 
-      - name: Checks-out self
-        uses: actions/checkout@v2
-        with:
-          path: httprookie
+#      - name: Checks-out self
+#        uses: actions/checkout@v2
+#        with:
+#          path: httprookie
 
       - run: echo "include ':httprookie'" > setting.gradle
+      - run: cat setting.gradle
       - run: chmod +x ./gradlew
-      - run: ./gradlew build
-      - run: ./gradlew :httprookie:uploadArchives
+#      - run: ./gradlew build
+#      - run: ./gradlew :httprookie:uploadArchives
 
