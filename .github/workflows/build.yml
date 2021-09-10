@@ -34,20 +34,15 @@ jobs:
         with:
           repository: mmm3w/armory
 
-      - name: Config SDK
-        run: echo "sdk.dir=$ANDROID_HOME" > local.properties
+      - run: echo "sdk.dir=$ANDROID_HOME" > local.properties
 
       - name: Checks-out self
         uses: actions/checkout@v2
         with:
           path: httprookie
 
-      - name: Config module
-        run: echo "include ':httprookie'" > setting.gradle
-
-      - name: Run build
-        run: ./gradlew build
-
-      - name: Package module
-        run: ./gradlew :httprookie:uploadArchives
+      - run: echo "include ':httprookie'" > setting.gradle
+      - run: chmod +x ./gradlew
+      - run: ./gradlew build
+      - run: ./gradlew :httprookie:uploadArchives
 
