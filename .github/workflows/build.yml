@@ -52,7 +52,7 @@ jobs:
 #        run: chmod +x ./gradlew
 
       - name: Run build
-        run: chmod +x ./armory/gradlew build
+        run: chmod +x ./gradlew build
 
       - name: Package module
         working-directory: ./armory
