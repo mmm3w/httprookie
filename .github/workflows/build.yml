@@ -34,6 +34,11 @@ jobs:
         with:
           repository: mmm3w/armory
 
+      - name: Check maven repo
+        uses: actions/checkout@v2
+        with:
+          path: maven
+
       - run: echo "sdk.dir=$ANDROID_HOME" > local.properties
 
       - name: Checks-out self
@@ -41,9 +46,11 @@ jobs:
         with:
           path: httprookie
 
-      - run: cat ./httprookie/README.md
-
       - run: echo "include ':httprookie'" > settings.gradle
       - run: chmod +x ./gradlew
-      - run: ./gradlew :httprookie:uploadArchives --stacktrace
+      - run: ./gradlew :httprookie:uploadArchives
+
+      - name: dfdf
+        working-directory: ./maven
+        run: git remote -v
 
