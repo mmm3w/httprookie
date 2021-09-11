@@ -30,6 +30,8 @@ jobs:
       - name: Setup Android SDK Tools
         uses: android-actions/setup-android@v2.0.2
 
+      - uses: actions/setup-python@v2.2.2
+
       - name: Check armory for compile
         uses: actions/checkout@v2
         with:
@@ -54,13 +56,15 @@ jobs:
       - run: chmod +x ./gradlew
       - run: ./gradlew :httprookie:uploadArchives
 
-      - name: Commit lib
+      - name: Update readme and commit
         working-directory: ./maven
         run: |
+          export VER=`grep "name" ../httprookie/module.gradle | cut -d "\"" -f 2`
+          python ../rmc.py ./README.md "implementation 'com.mitsuki.armory:httprookie:$VER'" httprookie:
           git config user.name Mitsuki
           git config user.email psnhewzc@gmail.com
           git add .
-          git commit -m "new ver"
+          git commit -m "new version: httprookie:$VER"
 
       - name: Push lib
         uses: ad-m/github-push-action@v0.6.0
