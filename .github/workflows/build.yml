@@ -51,11 +51,17 @@ jobs:
       - run: chmod +x ./gradlew
       - run: ./gradlew :httprookie:uploadArchives
 
-      - name: Push new version
+      - name: Commit lib
         working-directory: ./maven
         run: |
           git config user.name Mitsuki
           git config user.email psnhewzc@gmail.com
           git add .
           git commit -m "new ver"
-          git push
+
+      - name: Push lib
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          branch: main
+          directory: maven
+          repository: mmm3w/maven
