@@ -56,14 +56,14 @@ jobs:
         run: pwd
 
       - name: fdsa
-        working-directory: ./maven
-        run: cat com/mitsuki/armory/httprookie/maven-metadata.xml
+#        working-directory: ./maven
+        run: cat httprookie/repo/com/mitsuki/armory/httprookie/maven-metadata.xml
 
-      - name: Push new version
-        working-directory: ./maven
-        run: |
-          git config user.name Mitsuki
-          git config user.email psnhewzc@gmail.com
-          git add .
-          git commit -m "new ver"
-          git push
+#      - name: Push new version
+#        working-directory: ./maven
+#        run: |
+#          git config user.name Mitsuki
+#          git config user.email psnhewzc@gmail.com
+#          git add .
+#          git commit -m "new ver"
+#          git push
