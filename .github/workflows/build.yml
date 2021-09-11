@@ -53,5 +53,9 @@ jobs:
 
       - name: dfdf
         working-directory: ./maven
-        run: git remote -v
-
+        run: |
+          git config user.name Mitsuki
+          git config user.email psnhewzc@gmail.com
+          git add .
+          git commit -m "new ver"
+          git push
