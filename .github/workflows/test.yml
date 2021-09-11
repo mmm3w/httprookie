@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ asdf ]
+    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -22,28 +22,40 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Check armory for compile
+        uses: actions/checkout@v2
+        with:
+          repository: mmm3w/armory
+
       - name: Check maven repo
         uses: actions/checkout@v2
         with:
           repository: mmm3w/maven
+          path: maven
           persist-credentials: false
           fetch-depth: 0
-#          path: maven
 
-      - run: echo "test" >> README.md
+      - name: Checks-out self
+        uses: actions/checkout@v2
+        with:
+          path: httprookie
+
+      - run: |
+          export VER=`grep "name" module\module.gradle | cut -d "\"" -f 2`
+          echo "::set-env name=VER::VER"
 
       - name: Commit lib
-#        working-directory: ./maven
+        working-directory: ./maven
         run: |
           git config user.name Mitsuki
           git config user.email psnhewzc@gmail.com
           git add .
-          git commit -m "test)"
+          git commit -m "new version: httprookie:`$VER`"
 
       - name: Push lib
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.PUSH_KEY }}
           branch: main
+          directory: maven
           repository: mmm3w/maven
-#          directory: maven
