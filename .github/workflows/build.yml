@@ -57,7 +57,7 @@ jobs:
 
       - name: fdsa
 #        working-directory: ./maven
-        run: cat httprookie/repo/com/mitsuki/armory/httprookie/maven-metadata.xml
+        run: ls httprookie
 
 #      - name: Push new version
 #        working-directory: ./maven
