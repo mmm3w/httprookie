@@ -40,16 +40,10 @@ jobs:
         with:
           path: httprookie
 
-      - run: ls
-      - run: ls httprookie
-
-      - run: |
-          export VER=`grep "name" ./httprookie/module.gradle | cut -d "\"" -f 2`
-          echo "::set-env name=VER::VER"
-
       - name: Commit lib
         working-directory: ./maven
         run: |
+          export VER=`grep "name" ./httprookie/module.gradle | cut -d "\"" -f 2`
           git config user.name Mitsuki
           git config user.email psnhewzc@gmail.com
           git add .
