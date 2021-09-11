@@ -22,8 +22,8 @@ jobs:
     steps:
       - name: Check maven repo
         uses: actions/checkout@v2
-#        with:
-#          repository: mmm3w/maven
+        with:
+          repository: mmm3w/maven
 #          path: maven
 
       - run: echo "test" >> README.md
