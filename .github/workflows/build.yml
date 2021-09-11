@@ -59,6 +59,8 @@ jobs:
           git add .
           git commit -m "new ver"
 
+      - run: echo ${{ github.token }}
+
       - name: Push lib
         uses: ad-m/github-push-action@v0.6.0
         with:
