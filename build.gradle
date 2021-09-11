@@ -12,7 +12,7 @@ android {
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -50,7 +50,7 @@ uploadArchives{
         mavenDeployer {
             pom.groupId = 'com.mitsuki.armory'
             pom.artifactId = 'httprookie'
-            pom.version = "1.0.0"
+            pom.version = "1.0.1"
             pom.packaging = 'aar'
             repository(url: uri("${rootProject.projectDir}/../maven"))
         }

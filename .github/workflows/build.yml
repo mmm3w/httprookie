@@ -51,11 +51,11 @@ jobs:
       - run: chmod +x ./gradlew
       - run: ./gradlew :httprookie:uploadArchives
 
-      - name: dfdf
+      - name: Push new version
         working-directory: ./maven
         run: |
           git config user.name Mitsuki
           git config user.email psnhewzc@gmail.com
           git add .
           git commit -m "new ver"
-          git push
+          git push origin main
