@@ -40,6 +40,9 @@ jobs:
         with:
           path: httprookie
 
+      - run: ls
+      - run: ls httprookie
+
       - run: |
           export VER=`grep "name" httprookie\module.gradle | cut -d "\"" -f 2`
           echo "::set-env name=VER::VER"
