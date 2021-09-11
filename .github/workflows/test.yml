@@ -47,7 +47,7 @@ jobs:
         working-directory: ./maven
         run: |
           export VER=`grep "name" ../httprookie/module.gradle | cut -d "\"" -f 2`
-          python rmc.py ./README.md "implementation 'com.mitsuki.armory:httprookie:$VER'" httprookie:
+          python ../rmc.py ./README.md "implementation 'com.mitsuki.armory:httprookie:$VER'" httprookie:
           git config user.name Mitsuki
           git config user.email psnhewzc@gmail.com
           git add .
