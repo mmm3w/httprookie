@@ -62,6 +62,7 @@ jobs:
       - name: Push lib
         uses: ad-m/github-push-action@v0.6.0
         with:
+          github_token: ${{ github.token }}
           branch: main
           directory: maven
           repository: mmm3w/maven
