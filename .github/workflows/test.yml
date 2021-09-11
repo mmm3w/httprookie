@@ -41,7 +41,7 @@ jobs:
           path: httprookie
 
       - run: |
-          export VER=`grep "name" module\module.gradle | cut -d "\"" -f 2`
+          export VER=`grep "name" httprookie\module.gradle | cut -d "\"" -f 2`
           echo "::set-env name=VER::VER"
 
       - name: Commit lib
