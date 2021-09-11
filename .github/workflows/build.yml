@@ -37,6 +37,7 @@ jobs:
       - name: Check maven repo
         uses: actions/checkout@v2
         with:
+          repository: mmm3w/maven
           path: maven
 
       - run: echo "sdk.dir=$ANDROID_HOME" > local.properties
