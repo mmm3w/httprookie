@@ -51,19 +51,11 @@ jobs:
       - run: chmod +x ./gradlew
       - run: ./gradlew :httprookie:uploadArchives
 
-      - name: asdf
+      - name: Push new version
         working-directory: ./maven
-        run: pwd
-
-      - name: fdsa
-#        working-directory: ./maven
-        run: cat repo/com/mitsuki/armory/httprookie/maven-metadata.xml
-
-#      - name: Push new version
-#        working-directory: ./maven
-#        run: |
-#          git config user.name Mitsuki
-#          git config user.email psnhewzc@gmail.com
-#          git add .
-#          git commit -m "new ver"
-#          git push
+        run: |
+          git config user.name Mitsuki
+          git config user.email psnhewzc@gmail.com
+          git add .
+          git commit -m "new ver"
+          git push
