@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ sss ]
+    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -20,36 +20,13 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Setup Java JDK
-        uses: actions/setup-java@v2.3.0
-        with:
-          java-version: '8'
-          distribution: 'adopt'
-
-      - name: Setup Android SDK Tools
-        uses: android-actions/setup-android@v2.0.2
-
-      - name: Check armory for compile
-        uses: actions/checkout@v2
-        with:
-          repository: mmm3w/armory
-
       - name: Check maven repo
         uses: actions/checkout@v2
         with:
           repository: mmm3w/maven
           path: maven
 
-      - run: echo "sdk.dir=$ANDROID_HOME" > local.properties
-
-      - name: Checks-out self
-        uses: actions/checkout@v2
-        with:
-          path: httprookie
-
-      - run: echo "include ':httprookie'" > settings.gradle
-      - run: chmod +x ./gradlew
-      - run: ./gradlew :httprookie:uploadArchives
+      - run: echo "test" >> maven/README.md
 
       - name: Commit lib
         working-directory: ./maven
@@ -57,12 +34,12 @@ jobs:
           git config user.name Mitsuki
           git config user.email psnhewzc@gmail.com
           git add .
-          git commit -m "new ver"
+          git commit -m "test)"
 
       - name: Push lib
         uses: ad-m/github-push-action@v0.6.0
         with:
-          github_token: ${{ secrets.PUSH_KEY }}
+          github_token: ${{ github.token }}
           branch: main
           directory: maven
           repository: mmm3w/maven
