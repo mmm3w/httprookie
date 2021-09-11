@@ -24,8 +24,10 @@ jobs:
     steps:
       - name: Check maven repo
         uses: actions/checkout@v2
-#        with:
-#          repository: mmm3w/maven
+        with:
+          repository: mmm3w/maven
+          persist-credentials: false
+          fetch-depth: 0
 #          path: maven
 
       - run: echo "test" >> README.md
@@ -43,5 +45,5 @@ jobs:
         with:
           github_token: ${{ secrets.PUSH_KEY }}
           branch: main
-#          repository: mmm3w/maven
+          repository: mmm3w/maven
 #          directory: maven
