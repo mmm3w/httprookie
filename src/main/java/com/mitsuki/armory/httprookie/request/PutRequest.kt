@@ -1,11 +1,12 @@
 package com.mitsuki.armory.httprookie.request
 
 import okhttp3.MediaType
+import okhttp3.OkHttpClient
 import okhttp3.RequestBody
 import java.io.File
 import java.util.*
 
-class PutRequest<T : Any>(url: String) : Request<T>(url), HasBody {
+class PutRequest<T : Any>(client: OkHttpClient, url: String) : Request<T>(client, url), HasBody {
 
     override var type: HasBody.Type = HasBody.Type.NONE
     override val bodyParams: LinkedList<Pair<String, String>> = LinkedList()

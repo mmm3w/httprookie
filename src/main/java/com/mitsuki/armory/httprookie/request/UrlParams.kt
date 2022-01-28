@@ -9,9 +9,9 @@ interface UrlParams {
 fun UrlParams.urlParams(key: String, value: String) {
     if (key.isEmpty()) return
     if (value.isEmpty()) return
-    urlParams[key]?.add(value) ?: {
+    urlParams[key]?.add(value) ?: run {
         urlParams[key] = arrayListOf(value)
-    }()
+    }
 }
 
 fun UrlParams.urlParams(data: UrlParams) {

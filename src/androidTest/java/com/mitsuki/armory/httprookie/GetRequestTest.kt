@@ -27,35 +27,35 @@ class GetRequestTest {
     fun callbackTest() {
         val latch = CountDownLatch(3)
         val testStr = Array(3) { "" }
-        HttpRookie.get<String>("https://tcc.taobao.com/cc/json/mobile_tel_segment.htm") {
-            convert = StringConvert()
-            urlParams("tel" to "13858386438")
-            callback(
-                onStart = {
-                    testStr[0] = "onStart"
-                    latch.countDown()
-                },
-                onSuccess = {
-                    testStr[1] = "${it.requireBody()}"
-                    latch.countDown()
-                },
-                onError = {
-                    testStr[1] = "${it.throwable}"
-                    latch.countDown()
-                },
-                onFinish = {
-                    testStr[2] = "onFinish"
-                    latch.countDown()
-                }
-            )
-        }.enqueue()
-
-        latch.await()
-
-        println(testStr[1])
-        assertEquals("onStart", testStr[0])
-        assertNotNull(testStr[1])
-        assertEquals("onFinish", testStr[2])
+//        HttpRookie.get<String>("https://tcc.taobao.com/cc/json/mobile_tel_segment.htm") {
+//            convert = StringConvert()
+//            urlParams("tel" to "13858386438")
+//            callback(
+//                onStart = {
+//                    testStr[0] = "onStart"
+//                    latch.countDown()
+//                },
+//                onSuccess = {
+//                    testStr[1] = "${it.requireBody()}"
+//                    latch.countDown()
+//                },
+//                onError = {
+//                    testStr[1] = "${it.throwable}"
+//                    latch.countDown()
+//                },
+//                onFinish = {
+//                    testStr[2] = "onFinish"
+//                    latch.countDown()
+//                }
+//            )
+//        }.enqueue()
+//
+//        latch.await()
+//
+//        println(testStr[1])
+//        assertEquals("onStart", testStr[0])
+//        assertNotNull(testStr[1])
+//        assertEquals("onFinish", testStr[2])
     }
 
     @Test
@@ -103,29 +103,29 @@ class GetRequestTest {
 
     @Test
     fun apiTest() {
-        val url = "http://admin.seproofreading.com/api/invite/detail"
-        val latch = CountDownLatch(1)
-        var result = ""
-        HttpRookie.get<String>(url) {
-            urlParams("access_token" to "1111")
-            urlParams("app_os" to "Android")
-            urlParams("app_version" to "1.27.3")
-            urlParams("device_id" to "1.0")
-            convert = StringConvert()
-            callback(
-                onSuccess = {
-                    result = it.requireBody() ?: ""
-                    latch.countDown()
-                },
-                onError = {
-                    result = it.throwable.toString()
-                    latch.countDown()
-                }
-            )
-        }.enqueue()
-
-        latch.await()
-
-        println(result)
+//        val url = "http://admin.seproofreading.com/api/invite/detail"
+//        val latch = CountDownLatch(1)
+//        var result = ""
+//        HttpRookie.get<String>(url) {
+//            urlParams("access_token" to "1111")
+//            urlParams("app_os" to "Android")
+//            urlParams("app_version" to "1.27.3")
+//            urlParams("device_id" to "1.0")
+//            convert = StringConvert()
+//            callback(
+//                onSuccess = {
+//                    result = it.requireBody() ?: ""
+//                    latch.countDown()
+//                },
+//                onError = {
+//                    result = it.throwable.toString()
+//                    latch.countDown()
+//                }
+//            )
+//        }.enqueue()
+//
+//        latch.await()
+//
+//        println(result)
     }
 }

@@ -15,22 +15,22 @@ class PostRequestTest {
     @Test
     fun normalRequest() {
         val latch = CountDownLatch(1)
-        HttpRookie.post<String>("http://jsonplaceholder.typicode.com/posts") {
-            convert = StringConvert()
-            params("token" to "ttttt")
-            params("idd" to "iiiiiiii")
-            callback(
-                onSuccess = {
-                    println("${it.body}")
-                    latch.countDown()
-                },
-                onError = {
-                    println("${it.throwable}")
-                    latch.countDown()
-                }
-            )
-        }.enqueue()
-        latch.await()
+//        HttpRookie.post<String>("http://jsonplaceholder.typicode.com/posts") {
+//            convert = StringConvert()
+//            params("token" to "ttttt")
+//            params("idd" to "iiiiiiii")
+//            callback(
+//                onSuccess = {
+//                    println("${it.body}")
+//                    latch.countDown()
+//                },
+//                onError = {
+//                    println("${it.throwable}")
+//                    latch.countDown()
+//                }
+//            )
+//        }.enqueue()
+//        latch.await()
     }
 
 }

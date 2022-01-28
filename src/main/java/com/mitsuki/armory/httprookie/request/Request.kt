@@ -10,10 +10,11 @@ import com.mitsuki.armory.httprookie.observable.ObservableFactory
 import com.mitsuki.armory.httprookie.response.Response
 import io.reactivex.rxjava3.core.Observable
 import okhttp3.Call
+import okhttp3.OkHttpClient
 import okhttp3.Request
 
 @Suppress("MemberVisibilityCanBePrivate")
-abstract class Request<T : Any>(val rawUrl: String) : UrlParams, Headers {
+abstract class Request<T : Any>(val client: OkHttpClient, val rawUrl: String) : UrlParams, Headers {
     val mHttpRookie: HttpRookie = HttpRookie
 
     lateinit var mMediator: Mediator<T>
@@ -62,7 +63,7 @@ abstract class Request<T : Any>(val rawUrl: String) : UrlParams, Headers {
     fun generateCall(): Call {
         return generateRequest().let {
             rawRequest = it
-            mHttpRookie.client.newCall(it)
+            client.newCall(it)
         }
     }
 
