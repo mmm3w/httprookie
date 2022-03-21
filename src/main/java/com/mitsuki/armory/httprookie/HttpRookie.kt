@@ -35,12 +35,27 @@ object HttpRookie : UrlParams, Headers {
     ): PutRequest<T> =
         client.put(url, func)
 
+    fun <T : Any> patch(
+        client: OkHttpClient,
+        url: String,
+        func: (PatchRequest<T>.() -> Unit)? = null
+    ): PatchRequest<T> =
+        client.patch(url, func)
+
     fun <T : Any> delete(
         client: OkHttpClient,
         url: String,
         func: (DeleteRequest<T>.() -> Unit)? = null
     ): DeleteRequest<T> =
         client.delete(url, func)
+
+    fun <T : Any> method(
+        client: OkHttpClient,
+        url: String,
+        method: String,
+        func: (UnknownRequest<T>.() -> Unit)? = null
+    ): UnknownRequest<T> =
+        client.method(url, method, func)
 
     fun cancel(client: OkHttpClient, tag: Any) {
         client.cancel(tag)

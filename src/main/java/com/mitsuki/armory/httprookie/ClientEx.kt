@@ -1,9 +1,6 @@
 package com.mitsuki.armory.httprookie
 
-import com.mitsuki.armory.httprookie.request.DeleteRequest
-import com.mitsuki.armory.httprookie.request.GetRequest
-import com.mitsuki.armory.httprookie.request.PostRequest
-import com.mitsuki.armory.httprookie.request.PutRequest
+import com.mitsuki.armory.httprookie.request.*
 import okhttp3.OkHttpClient
 
 fun <T : Any> OkHttpClient.get(
@@ -25,11 +22,24 @@ fun <T : Any> OkHttpClient.put(
 ): PutRequest<T> =
     PutRequest<T>(this, url).apply { func?.let { this.it() } }
 
+fun <T : Any> OkHttpClient.patch(
+    url: String,
+    func: (PatchRequest<T>.() -> Unit)? = null
+): PatchRequest<T> =
+    PatchRequest<T>(this, url).apply { func?.let { this.it() } }
+
 fun <T : Any> OkHttpClient.delete(
     url: String,
     func: (DeleteRequest<T>.() -> Unit)? = null
 ): DeleteRequest<T> =
     DeleteRequest<T>(this, url).apply { func?.let { this.it() } }
+
+fun <T : Any> OkHttpClient.method(
+    url: String,
+    method: String,
+    func: (UnknownRequest<T>.() -> Unit)? = null
+): UnknownRequest<T> =
+    UnknownRequest<T>(this, url, method).apply { func?.let { this.it() } }
 
 fun OkHttpClient.cancel(tag: Any) {
     for (call in dispatcher.queuedCalls()) {
