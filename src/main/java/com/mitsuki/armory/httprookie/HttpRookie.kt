@@ -2,6 +2,8 @@ package com.mitsuki.armory.httprookie
 
 import com.mitsuki.armory.httprookie.request.*
 import okhttp3.OkHttpClient
+import java.util.*
+import kotlin.collections.LinkedHashMap
 
 /**
  * java 支持
@@ -12,7 +14,7 @@ object HttpRookie : UrlParams, Headers {
     override val urlParams: LinkedHashMap<String, MutableList<String>> = LinkedHashMap()
 
     //公共header
-    override val headers: LinkedHashMap<String, String> = LinkedHashMap()
+    override val headers: LinkedHashMap<String, LinkedList<String>> = LinkedHashMap()
 
     fun <T : Any> get(
         client: OkHttpClient,

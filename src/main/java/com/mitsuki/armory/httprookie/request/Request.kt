@@ -12,6 +12,8 @@ import io.reactivex.rxjava3.core.Observable
 import okhttp3.Call
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import java.util.*
+import kotlin.collections.LinkedHashMap
 
 @Suppress("MemberVisibilityCanBePrivate")
 abstract class Request<T : Any>(val client: OkHttpClient, val rawUrl: String) : UrlParams, Headers {
@@ -24,7 +26,7 @@ abstract class Request<T : Any>(val client: OkHttpClient, val rawUrl: String) : 
     var rawRequest: Request? = null
     var callback: Callback<T> = DefaultCallback()
 
-    override val headers: LinkedHashMap<String, String> = LinkedHashMap()
+    override val headers: LinkedHashMap<String, LinkedList<String>> = LinkedHashMap()
     override val urlParams: LinkedHashMap<String, MutableList<String>> = LinkedHashMap()
 
     init {
