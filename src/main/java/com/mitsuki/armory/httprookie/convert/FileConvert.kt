@@ -3,24 +3,28 @@ package com.mitsuki.armory.httprookie.convert
 import okhttp3.Response
 import java.io.File
 
-class FileConvert(private val folder: String, private val fileName: String) : Convert<File> {
+class FileConvert(private val saveFile: File) : Convert<File> {
+
+    constructor(folder: File, name: String) : this(File(folder, name))
+    constructor(folder: String, name: String) : this(File(folder, name))
 
     var bufferSize: Int = 1024
 
     override fun convertResponse(response: Response): File? {
-        val dir = File(folder).apply { createFolder() }
-        val file = File(dir, fileName).apply { clear() }
+        saveFile.parentFile?.createFolder()
+        saveFile.clear()
+
         (response.body?.byteStream() ?: return null).use { inputStream ->
             var len: Int
             val buffer = ByteArray(bufferSize)
-            file.outputStream().use {
+            saveFile.outputStream().use {
                 while (inputStream.read(buffer).apply { len = this } != -1) {
                     it.write(buffer, 0, len)
                 }
                 it.flush()
             }
         }
-        return file
+        return saveFile
     }
 
     private fun File.createFolder() {
